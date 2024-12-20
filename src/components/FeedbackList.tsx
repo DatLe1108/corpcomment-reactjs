@@ -1,27 +1,21 @@
-import { TriangleUpIcon } from "@radix-ui/react-icons";
+import FeedbackItemComponent from "./FeedbackItemComponent";
 
 export default function FeedbackList() {
+  const feedbackItem = {
+    upvoteCount: 0,
+    badgeLetter: "A",
+    companyName: "Company",
+    text: "This is a feedback item",
+    daysAgo: 1,
+  };
+
+  const feedbackItems = [feedbackItem];
+
   return (
     <ol className="feedback-list">
-      <li className="feedback">
-        <button>
-          <TriangleUpIcon />
-          <span>593</span>
-        </button>
-        <div>
-          <p>B</p>
-        </div>
-
-        <div>
-          <p>DatLe</p>
-          <p>
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ullam
-            tempora deleniti vel aut dolore quibusdam.
-          </p>
-        </div>
-
-        <p>4d</p>
-      </li>
+      {feedbackItems.map((feedbackItem) => (
+        <FeedbackItemComponent feedbackItem={feedbackItem} />
+      ))}
     </ol>
   );
 }
