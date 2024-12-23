@@ -24,7 +24,6 @@ export default function FeedbackForm({ onAddToList }: FeedbackFormProps) {
     event.preventDefault();
 
     //validation
-
     if (text.includes("#") && text.length >= 5) {
       setShowValidIndicator(true);
       setTimeout(() => setShowValidIndicator(false), 2000);
