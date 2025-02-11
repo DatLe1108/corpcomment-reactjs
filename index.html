@@ -8,10 +8,49 @@
       href="https://bytegrad.com/course-assets/js/1/favicon.png"
     />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script
+      id="Cookiebot"
+      src="https://consent.cookiebot.com/uc.js"
+      data-cbid="976f1835-04fc-4dad-bb03-90773df8b45c"
+      data-blockingmode="auto"
+      type="text/javascript"
+    ></script>
+    <script
+      id="CookieDeclaration"
+      src="https://consent.cookiebot.com/976f1835-04fc-4dad-bb03-90773df8b45c/cd.js"
+      type="text/javascript"
+      async
+    ></script>
     <title>CorpComment -- Give Feddback publicly</title>
+    <script src="https://play2.qbrick.com/framework/GoBrain.min.js"></script>
   </head>
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
+
+    <script type="text/javascript">
+      const processPlayer = (isAllow) => {
+        const videoElements = Array.from(
+          document.querySelectorAll("[data-qplayer-media-id]")
+        );
+
+        videoElements.map(function (el) {
+          const source = el.getAttribute("data-cookieblock-src");
+          el.setAttribute(
+            "src",
+            `${source}&ignoreAnalytics=${(!isAllow).toString()}`
+          );
+          el.style.cssText = "display:block !important";
+        });
+      };
+
+      window.addEventListener("CookiebotOnAccept", (e) => {
+        processPlayer(Cookiebot?.consent?.statistics);
+      });
+
+      window.addEventListener("CookiebotOnDecline", (e) => {
+        processPlayer(Cookiebot?.consent?.statistics);
+      });
+    </script>
   </body>
 </html>
